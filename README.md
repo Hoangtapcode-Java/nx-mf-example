@@ -35,7 +35,7 @@ Each remote runs independently but can also be loaded into the host dynamically 
 ---
 
 ## 📂 Folder Structure
-
+```
 myapp/
 ├── apps/
 │ ├── hosts/
@@ -83,7 +83,7 @@ myapp/
 ├── tsconfig.base.json
 ├── package.json
 └── README.md
-
+```
 ---
 
 ## ⚙️ Tech Stack
@@ -106,12 +106,13 @@ myapp/
 pnpm install
 
 (or npm install depending on your setup)
-
-**2️⃣ Serve applications**
-**Run all apps (host + remotes)**
+```
+### 2️⃣ Serve applications
+```Run all apps (host + remotes)
 pnpm run start
 
-**Or run individually:**
+Or run individually:
 nx serve employee     # Host
 nx serve login-app    # Remote Login
 nx serve todo         # Remote Todo
+```
