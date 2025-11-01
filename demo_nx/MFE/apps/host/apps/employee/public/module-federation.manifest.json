@@ -1,0 +1,4 @@
+{
+  "todo": "http://localhost:4202/mf-manifest.json",
+  "login_app": "http://localhost:4203/mf-manifest.json"
+}

@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "login/Routes": ["apps/login/src/app/remote-entry/entry.routes.ts"],
+      "todo/Routes": [
+        "apps/remotes/apps/todo/src/app/remote-entry/entry.routes.ts"
+      ],
+      "login_app/Routes": [
+        "apps/remotes/apps/login_app/src/app/remote-entry/entry.routes.ts"
+      ],
+      "@mfe/login-form": ["libs/shared/features/login-form/src/index.ts"],
+      "@mfe/button": ["libs/shared/ui/button/src/index.ts"],
+      "@mfe/dialog": ["libs/shared/ui/dialog/src/index.ts"],
+      "@mfe/utils": ["libs/shared/utils/src/index.ts"],
+      "@mfe/directives": ["libs/shared/common/directives/src/index.ts"],
+      "@mfe/pipes": ["libs/shared/common/pipes/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

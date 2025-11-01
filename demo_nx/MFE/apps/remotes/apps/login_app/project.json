@@ -1,0 +1,105 @@
+{
+  "name": "login_app",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/remotes/apps/login_app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/remotes/apps/login_app",
+        "index": "apps/remotes/apps/login_app/src/index.html",
+        "main": "apps/remotes/apps/login_app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/remotes/apps/login_app/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/remotes/apps/login_app/public"
+          }
+        ],
+        "styles": ["apps/remotes/apps/login_app/src/styles.css"],
+        "customWebpackConfig": {
+          "path": "apps/remotes/apps/login_app/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/remotes/apps/login_app/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4203,
+        "publicHost": "http://localhost:4203"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "login_app:build:production"
+        },
+        "development": {
+          "buildTarget": "login_app:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "dependsOn": ["employee:serve"]
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "login_app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "login_app:build",
+        "port": 4203,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "login_app:build:development"
+        },
+        "production": {
+          "buildTarget": "login_app:build:production"
+        }
+      }
+    }
+  }
+}
